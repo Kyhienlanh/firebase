@@ -1,5 +1,6 @@
 package com.example.firebase
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -51,6 +52,18 @@ class FetchingActivity : AppCompatActivity() {
                     }
                     val mAdapter=EmpAdapter(ds)
                     recyclerView.adapter=mAdapter
+                    //code lang nghe su kien
+                    mAdapter.setOnItemClickListener(object :EmpAdapter.onItemClickListener{
+                        override fun onItemClick(position: Int) {
+                            val intent= Intent(this@FetchingActivity,DetailMainActivity3::class.java)
+                            intent.putExtra("id", ds[position].id)
+                            intent.putExtra("name", ds[position].name)
+                            intent.putExtra("price", ds[position].price)
+                            intent.putExtra("description", ds[position].description)
+                            startActivity(intent)
+
+                        }
+                    })
                     recyclerView.visibility= View.VISIBLE
                     textView.visibility=View.GONE
                 }
