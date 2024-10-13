@@ -19,8 +19,13 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         var button=findViewById<Button>(R.id.button)
+        var button2=findViewById<Button>(R.id.button2)
         button.setOnClickListener(){
             var intent = Intent(this,MainActivity2::class.java)
+            startActivity(intent)
+        }
+        button2.setOnClickListener(){
+            var intent = Intent(this,FetchingActivity::class.java)
             startActivity(intent)
         }
     }
